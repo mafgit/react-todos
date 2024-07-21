@@ -30,7 +30,7 @@
 
 .sidebar-item {
   width: 100%;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 5px 10px;
   background-color: #ffffff;
   text-decoration: none;
@@ -52,7 +52,7 @@
 .sidebar-section .create-btn {
   width: 100%;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   display: flex;
   gap: 10px;
   justify-content: center;

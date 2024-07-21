@@ -25,7 +25,8 @@ const TodoList = () => {
     <div className="todo-list main">
       <div className="todo-list-head">
         <h1 className="todo-list-heading">
-          <FontAwesomeIcon icon={faRocket} /> {todoList.title}
+          <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "}
+          {todoList.title}
         </h1>
         <Link to={location.pathname + "/create-todo"}>
           <FontAwesomeIcon icon={faPlus} className="create-todo-btn btn" />

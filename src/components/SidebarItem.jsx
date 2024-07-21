@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SidebarItem = ({ id, title }) => {
   return (
     <Link className="sidebar-item" to={`/todo-list/${id}`}>
-      <FontAwesomeIcon icon={faRocket} />
+      <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />
       <p>{title}</p>
     </Link>
   );

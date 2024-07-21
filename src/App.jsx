@@ -73,8 +73,22 @@ function App() {
           <Sidebar />
           <Routes>
             <Route path="/todo-list/:id" element={<TodoList />} />
-            <Route path="/create-todo-list" element={<CreateTodoList />} />
-            <Route path="/todo-list/:id/create-todo" element={<CreateTodo />} />
+            <Route
+              path="/create-todo-list"
+              element={<CreateTodoList edit={false} />}
+            />
+            <Route
+              path="/todo-list/:id/create-todo"
+              element={<CreateTodo edit={false} />}
+            />
+            <Route
+              path="/edit-todo-list"
+              element={<CreateTodoList edit={true} />}
+            />
+            <Route
+              path="/todo-list/:id/edit-todo/:tid"
+              element={<CreateTodo edit={true} />}
+            />
           </Routes>
         </MainContext.Provider>
       </div>

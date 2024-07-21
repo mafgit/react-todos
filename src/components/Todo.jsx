@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { MainContext } from "../App";
+import { Link } from "react-router-dom";
 
 const Todo = ({ title, id, listId, completed, date }) => {
   const [done, setDone] = useState(completed);
@@ -25,9 +26,9 @@ const Todo = ({ title, id, listId, completed, date }) => {
 
           const lists = todoLists;
           lists.forEach((list) => {
-            if (list.id == listId) {
+            if (list.id === listId) {
               list.todos.forEach((todo) => {
-                if (todo.id == id) {
+                if (todo.id === id) {
                   todo.completed = !done;
                 }
               });
@@ -36,13 +37,36 @@ const Todo = ({ title, id, listId, completed, date }) => {
 
           setTodoLists(lists);
 
-          localStorage.setItem("todo-lists", JSON.stringify(todoLists));
+          localStorage.setItem("todo-lists", JSON.stringify(lists));
+          console.log(lists);
+          // TODO: FIX ERROR tick in one list goes to other lists
         }}
       />
       <p>{title}</p>
       <p className="date">{date}</p>
-      <FontAwesomeIcon icon={faTrash} className="btn trash-btn" />
-      <FontAwesomeIcon icon={faPen} className="btn pen-btn" />
+      <FontAwesomeIcon
+        icon={faTrash}
+        className="btn trash-btn"
+        onClick={() => {
+          // TODO: FIX ERROR
+          // const lists = todoLists;
+          // for (let i = 0; i < lists.length; i++) {
+          //   if (lists[i].id === listId) {
+          //     const { todos } = lists[i];
+          //     for (let j = 0; j < todos.length; j++) {
+          //       if (todos[j].id === id) {
+          //         lists.splice(j, 1);
+          //       }
+          //     }
+          //   }
+          // }
+          // setTodoLists(lists);
+          // saveTodoLists(lists)
+        }}
+      />
+      <Link to={`/todo-list/${listId}/edit-todo/${id}`}>
+        <FontAwesomeIcon icon={faPen} className="btn pen-btn" />
+      </Link>
     </div>
   );
 };
