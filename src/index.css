@@ -20,15 +20,15 @@ h3 {
   padding: 10px;
 }
 
-button {
+button,
+.btn {
   outline: none;
   border: none;
   cursor: pointer;
   transition: 0.3s;
-  background-color: #fff;
 }
 
-button:hover {
+button:hover .btn:hover {
   opacity: 0.8;
 }
 

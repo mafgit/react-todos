@@ -35,5 +35,40 @@
 }
 
 .date {
-  justify-self: flex-end;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.trash-btn,
+.pen-btn {
+  color: #cacaca;
+}
+
+.completed-square {
+  color: #00a508;
+}
+
+.completed-todo {
+  opacity: 0.7;
+}
+
+.todo-list-heading {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.todo-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create-todo-btn {
+  color: #fff;
+  background-color: #00a508;
+  border-radius: 5px;
+  padding: 10px;
 }

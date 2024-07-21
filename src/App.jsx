@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TodoList from "./pages/TodoList";
 import CreateTodoList from "./pages/CreateTodoList";
+import CreateTodo from "./pages/CreateTodo";
 
 export const MainContext = createContext(0);
 
@@ -18,12 +19,14 @@ const defaultTodoLists = [
         completed: false,
         title: "Go to shopping",
         date: "12 Sep, 2024",
+        listId: 0,
       },
       {
         id: 1,
         completed: false,
         title: "Go to market",
         date: "13 Sep, 2024",
+        listId: 0,
       },
     ],
   },
@@ -37,12 +40,14 @@ const defaultTodoLists = [
         completed: false,
         title: "Go to shopping 2",
         date: "12 Sep, 2024",
+        listId: 1,
       },
       {
         id: 1,
         completed: false,
         title: "Go to market 2",
         date: "13 Sep, 2024",
+        listId: 1,
       },
     ],
   },
@@ -69,6 +74,7 @@ function App() {
           <Routes>
             <Route path="/todo-list/:id" element={<TodoList />} />
             <Route path="/create-todo-list" element={<CreateTodoList />} />
+            <Route path="/todo-list/:id/create-todo" element={<CreateTodo />} />
           </Routes>
         </MainContext.Provider>
       </div>

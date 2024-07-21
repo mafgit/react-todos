@@ -58,7 +58,7 @@ const CreateTodoList = () => {
       </div>
 
       <div>
-        <label htmlFor="title-input">Choose an icon</label>
+        <label htmlFor="icon-input">Choose an icon</label>
         <input id="icon-input" type="button" />
       </div>
 

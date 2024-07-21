@@ -15,7 +15,7 @@ const Sidebar = () => {
   const { todoLists } = useContext(MainContext);
   return (
     <div className="sidebar">
-      <h1 className="heading">Webapp</h1>
+      <h1 className="heading">React Todos</h1>
 
       <div className="sidebar-section">
         <div className="section-head">

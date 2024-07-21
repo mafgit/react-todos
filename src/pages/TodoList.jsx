@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import Todo from "../components/Todo";
 import "../styles/TodoList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faRocket } from "@fortawesome/free-solid-svg-icons";
 
 const TodoList = () => {
+  const location = useLocation();
   const { todoLists } = useContext(MainContext);
   const [todoList, setTodoList] = useState([]);
   const { id } = useParams();
@@ -20,7 +23,15 @@ const TodoList = () => {
 
   return (
     <div className="todo-list main">
-      <h1>{todoList.title}</h1>
+      <div className="todo-list-head">
+        <h1 className="todo-list-heading">
+          <FontAwesomeIcon icon={faRocket} /> {todoList.title}
+        </h1>
+        <Link to={location.pathname + "/create-todo"}>
+          <FontAwesomeIcon icon={faPlus} className="create-todo-btn btn" />
+        </Link>
+      </div>
+
       {todoList.todos?.map((todo) => {
         return (
           <Todo
@@ -29,6 +40,7 @@ const TodoList = () => {
             key={todo.id}
             id={todo.id}
             date={todo.date}
+            listId={todoList.id}
           />
         );
       })}
