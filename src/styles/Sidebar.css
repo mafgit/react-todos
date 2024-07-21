@@ -1,6 +1,7 @@
 .sidebar {
-  width: 250px;
-  background-image: linear-gradient(#0066ff, #18aaff);
+  width: 275px;
+  /* background-image: linear-gradient(#0066ff, #18aaff); */
+  background-color: #009dd5;
   height: 100vh;
   color: #fff;
   display: flex;
@@ -30,13 +31,18 @@
 .sidebar-item {
   width: 100%;
   border-radius: 3px;
-  padding: 5px;
-  background-color: #fff;
+  padding: 5px 10px;
+  background-color: #ffffff;
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
   gap: 10px;
   align-items: center;
+  transition: all 0.3s;
+}
+
+.sidebar-item:hover {
+  scale: 1.02;
 }
 
 .sidebar-item:visited {
@@ -53,7 +59,12 @@
   align-items: center;
   text-decoration: none;
   background-color: #fff;
+  transition: all 0.3s;
   color: #000;
+}
+
+.sidebar-section .create-btn:hover {
+  scale: 1.02;
 }
 
 .sidebar-section .create-btn:visited {
