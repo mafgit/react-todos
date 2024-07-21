@@ -9,6 +9,7 @@ import {
   faSortDown,
   faSortUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { todoLists } = useContext(MainContext);
@@ -23,12 +24,12 @@ const Sidebar = () => {
         </div>
 
         {todoLists.map((list) => {
-          return <SidebarItem key={list.id} _id={list.id} name={list.name} />;
+          return <SidebarItem key={list.id} id={list.id} title={list.title} />;
         })}
 
-        <button>
+        <Link to="/create-todo-list" className="create-btn">
           <FontAwesomeIcon icon={faPlus} /> Create
-        </button>
+        </Link>
       </div>
     </div>
   );
