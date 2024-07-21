@@ -19,7 +19,7 @@ const TodoList = () => {
   }, [id]);
 
   return (
-    <div className="todo-list">
+    <div className="todo-list main">
       <h1>{todoList.title}</h1>
       {todoList.todos?.map((todo) => {
         return (
