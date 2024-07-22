@@ -5,6 +5,7 @@ import "../styles/Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
+  faRocket,
   faSort,
   faSortDown,
   faSortUp,
@@ -16,7 +17,11 @@ const Sidebar = () => {
   // TODO: new name of list not getting updated in sidebar
   return (
     <div className="sidebar">
-      <h1 className="heading">React Todos</h1>
+      <Link to="/" className="heading-link">
+        <h1 className="heading rocket">
+          <FontAwesomeIcon className="rocket" icon={faRocket} /> React Todos
+        </h1>
+      </Link>
 
       <div className="sidebar-section">
         <div className="section-head">

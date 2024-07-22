@@ -12,6 +12,10 @@
   position: fixed;
 }
 
+.sidebar .rocket {
+  margin-right: 10px;
+}
+
 .sidebar-section {
   display: flex;
   flex-direction: column;
@@ -69,4 +73,9 @@
 
 .sidebar-section .create-btn:visited {
   color: #000;
+}
+
+.heading-link {
+  text-decoration: none;
+  color: #fff;
 }

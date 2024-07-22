@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TodoList from "./pages/TodoList";
 import CreateTodoList from "./pages/CreateTodoList";
 import CreateTodo from "./pages/CreateTodo";
+import HomePage from "./pages/HomePage";
 
 export const MainContext = createContext(0);
 
@@ -99,6 +100,7 @@ function App() {
               path="/todo-list/:id/edit-todo/:tid"
               element={<CreateTodo edit={true} />}
             />
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </MainContext.Provider>
       </div>

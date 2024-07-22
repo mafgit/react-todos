@@ -33,28 +33,15 @@ const CreateTodoList = ({ edit }) => {
         const lists = todoLists;
 
         if (!edit) {
-          setTodoLists([
-            ...lists,
-            {
-              title: title,
-              icon: "",
-              todos: [],
-              id: Math.floor(Math.random() * (max - min) + min),
-            },
-          ]);
+          const newTodoList = {
+            title: title,
+            icon: "",
+            todos: [],
+            id: Math.floor(Math.random() * (max - min) + min),
+          };
 
-          localStorage.setItem(
-            "todo-lists",
-            JSON.stringify([
-              ...lists,
-              {
-                title: title,
-                icon: "",
-                todos: [],
-                id: Math.floor(Math.random() * (max - min) + min),
-              },
-            ])
-          );
+          setTodoLists([...lists, newTodoList]);
+          saveTodoLists([...lists, newTodoList]);
         } else {
           lists.forEach((list) => {
             if (list.id == id) {
@@ -62,10 +49,11 @@ const CreateTodoList = ({ edit }) => {
               list.icon = icon;
             }
           });
+
+          setTodoLists(lists);
+          saveTodoLists(lists);
         }
 
-        setTodoLists(lists);
-        saveTodoLists(lists);
         navigate(-1);
       }}
     >
