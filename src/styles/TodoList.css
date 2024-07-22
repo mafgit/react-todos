@@ -66,9 +66,24 @@
   justify-content: space-between;
 }
 
-.create-todo-btn {
+.create-todo-btn,
+.edit-todo-list-btn,
+.delete-todo-list-btn {
   color: #fff;
   background-color: #00a508bd;
   border-radius: 5px;
   padding: 10px;
+}
+
+.edit-todo-list-btn {
+  background-color: #0068a5bd;
+}
+
+.delete-todo-list-btn {
+  background-color: #d62929;
+}
+
+.todo-list-btns {
+  display: flex;
+  gap: 10px;
 }

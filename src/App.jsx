@@ -18,14 +18,14 @@ const defaultTodoLists = [
         id: 0,
         completed: false,
         title: "Go to shopping",
-        date: "12 Sep, 2024",
+        date: "2024-09-12",
         listId: 0,
       },
       {
         id: 1,
         completed: false,
         title: "Go to market",
-        date: "13 Sep, 2024",
+        date: "2024-09-13",
         listId: 0,
       },
     ],
@@ -39,14 +39,14 @@ const defaultTodoLists = [
         id: 0,
         completed: false,
         title: "Go to shopping 2",
-        date: "12 Sep, 2024",
+        date: "2024-09-12",
         listId: 1,
       },
       {
         id: 1,
         completed: false,
         title: "Go to market 2",
-        date: "13 Sep, 2024",
+        date: "2024-09-13",
         listId: 1,
       },
     ],
@@ -59,6 +59,16 @@ function App() {
     return JSON.parse(localStorage.getItem("todo-lists")) || defaultTodoLists;
   });
 
+  const saveTodoLists = (lists) => {
+    return localStorage.setItem("todo-lists", JSON.stringify(lists));
+  };
+
+  const getRandomId = () => {
+    const min = 2;
+    const max = 100000;
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -66,8 +76,8 @@ function App() {
           value={{
             todoLists,
             setTodoLists,
-            // selectedTodoListId,
-            // setSelectedTodoListId,
+            saveTodoLists,
+            getRandomId,
           }}
         >
           <Sidebar />
@@ -82,7 +92,7 @@ function App() {
               element={<CreateTodo edit={false} />}
             />
             <Route
-              path="/edit-todo-list"
+              path="/todo-list/:id/edit-todo-list"
               element={<CreateTodoList edit={true} />}
             />
             <Route

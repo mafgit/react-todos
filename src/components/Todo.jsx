@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Todo = ({ title, id, listId, completed, date }) => {
   const [done, setDone] = useState(completed);
-  const { todoLists, setTodoLists } = useContext(MainContext);
+  const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
 
   return (
     <div className={"todo" + (done ? " completed-todo" : "")}>
@@ -26,9 +26,9 @@ const Todo = ({ title, id, listId, completed, date }) => {
 
           const lists = todoLists;
           lists.forEach((list) => {
-            if (list.id === listId) {
+            if (list.id == listId) {
               list.todos.forEach((todo) => {
-                if (todo.id === id) {
+                if (todo.id == id) {
                   todo.completed = !done;
                 }
               });
@@ -48,20 +48,20 @@ const Todo = ({ title, id, listId, completed, date }) => {
         icon={faTrash}
         className="btn trash-btn"
         onClick={() => {
-          // TODO: FIX ERROR
-          // const lists = todoLists;
-          // for (let i = 0; i < lists.length; i++) {
-          //   if (lists[i].id === listId) {
-          //     const { todos } = lists[i];
-          //     for (let j = 0; j < todos.length; j++) {
-          //       if (todos[j].id === id) {
-          //         lists.splice(j, 1);
-          //       }
-          //     }
-          //   }
-          // }
-          // setTodoLists(lists);
-          // saveTodoLists(lists)
+          // TODO: not getting updated after deleting
+          const lists = todoLists;
+          for (let i = 0; i < lists.length; i++) {
+            if (lists[i].id == listId) {
+              const { todos } = lists[i];
+              for (let j = 0; j < todos.length; j++) {
+                if (todos[j].id == id) {
+                  lists[i].todos.splice(j, 1);
+                }
+              }
+            }
+          }
+          setTodoLists(lists);
+          saveTodoLists(lists);
         }}
       />
       <Link to={`/todo-list/${listId}/edit-todo/${id}`}>

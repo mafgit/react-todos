@@ -4,7 +4,12 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import Todo from "../components/Todo";
 import "../styles/TodoList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faRocket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faPlus,
+  faRocket,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TodoList = () => {
   const location = useLocation();
@@ -28,9 +33,19 @@ const TodoList = () => {
           <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "}
           {todoList.title}
         </h1>
-        <Link to={location.pathname + "/create-todo"}>
-          <FontAwesomeIcon icon={faPlus} className="create-todo-btn btn" />
-        </Link>
+        <div className="todo-list-btns">
+          {/* TODO: delete todo list */}
+          <FontAwesomeIcon
+            icon={faTrash}
+            className="delete-todo-list-btn btn"
+          />
+          <Link to={location.pathname + "/edit-todo-list"}>
+            <FontAwesomeIcon icon={faPen} className="edit-todo-list-btn btn" />
+          </Link>
+          <Link to={location.pathname + "/create-todo"}>
+            <FontAwesomeIcon icon={faPlus} className="create-todo-btn btn" />
+          </Link>
+        </div>
       </div>
 
       {todoList.todos?.map((todo) => {

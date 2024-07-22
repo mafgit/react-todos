@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { todoLists } = useContext(MainContext);
+  // TODO: new name of list not getting updated in sidebar
   return (
     <div className="sidebar">
       <h1 className="heading">React Todos</h1>

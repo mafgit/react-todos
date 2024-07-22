@@ -2,47 +2,73 @@ import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/CreateTodoList.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
 
-const CreateTodo = () => {
+const CreateTodo = ({ edit }) => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState();
-  const [date, setDate] = useState();
-  const { todoLists, setTodoLists } = useContext(MainContext);
-  const { id } = useParams();
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const { todoLists, setTodoLists, saveTodoLists, getRandomId } =
+    useContext(MainContext);
+  const { id, tid } = useParams();
+
+  useEffect(() => {
+    if (edit) {
+      for (let i = 0; i < todoLists.length; i++) {
+        if (todoLists[i].id == id) {
+          const { todos } = todoLists[i];
+          for (let j = 0; j < todos.length; j++) {
+            if (todos[j].id == tid) {
+              setTitle(todos[j].title);
+              setDate(todos[j].date);
+            }
+          }
+        }
+      }
+    }
+  }, [id, tid]);
 
   return (
     <form
       className="create-form main"
       onSubmit={(e) => {
         e.preventDefault();
-        const max = 1000000;
-        const min = 2;
-
         const lists = todoLists;
-        lists.forEach((list) => {
-          if (list.id == id) {
-            list.todos = [
-              ...list.todos,
-              {
-                completed: false,
-                date,
-                title,
-                id: Math.floor(Math.random() * (max - min) + min),
-              },
-            ];
-          }
-        });
+
+        if (!edit) {
+          lists.forEach((list) => {
+            if (list.id == id) {
+              list.todos = [
+                ...list.todos,
+                {
+                  completed: false,
+                  date,
+                  title,
+                  id: getRandomId(),
+                },
+              ];
+            }
+          });
+        } else {
+          lists.forEach((list) => {
+            if (list.id == id) {
+              list.todos.forEach((todo) => {
+                if (todo.id == tid) {
+                  todo.title = title;
+                  todo.date = date;
+                }
+              });
+            }
+          });
+        }
 
         setTodoLists(lists);
-
-        localStorage.setItem("todo-lists", JSON.stringify(lists));
-
+        saveTodoLists(lists);
         navigate(-1);
       }}
     >
-      <h1>Create a todo</h1>
+      <h1>{edit ? "Edit todo" : "Create a todo"}</h1>
       <hr />
       <div>
         <label htmlFor="title-input">Write your todo here</label>
@@ -52,6 +78,7 @@ const CreateTodo = () => {
           placeholder="Title"
           required
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
       </div>
 
@@ -62,6 +89,7 @@ const CreateTodo = () => {
           type="date"
           required
           onChange={(e) => setDate(e.target.value)}
+          value={date}
         />
       </div>
 
