@@ -10,7 +10,7 @@ import {
 const HomePage = () => {
   return (
     <div className="home-page main">
-      <FontAwesomeIcon className="door-open" icon={faDoorOpen} />
+      <FontAwesomeIcon className="big-icon" icon={faDoorOpen} />
       <h1>
         <FontAwesomeIcon className="rocket" icon={faRocket} /> Welcome to React
         Todos

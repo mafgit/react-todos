@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
-import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useLocation,
+  useNavigate,
+  redirect,
+} from "react-router-dom";
 import Todo from "../components/Todo";
 import "../styles/TodoList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,12 +25,20 @@ const TodoList = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    todoLists.length &&
+    let found = false;
+
+    if (todoLists.length) {
       todoLists.forEach((list) => {
         if (list.id == id) {
           setTodoList(list);
+          found = true;
         }
       });
+    }
+
+    if (!found) {
+      redirect("/invalid-path");
+    }
   }, [id]);
 
   return (

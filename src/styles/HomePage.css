@@ -10,7 +10,7 @@
   color: #009dd5;
 }
 
-.home-page .door-open {
+.home-page .big-icon {
   font-size: 50px;
   color: #009dd5;
 }
@@ -31,4 +31,20 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.invalid-page h1 {
+  color: #d62929;
+}
+
+.invalid-page .big-icon {
+  color: #d62929;
+}
+
+.invalid-page .go-to-home-btn {
+  background-color: #009dd5;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
 }

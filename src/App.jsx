@@ -5,6 +5,7 @@ import TodoList from "./pages/TodoList";
 import CreateTodoList from "./pages/CreateTodoList";
 import CreateTodo from "./pages/CreateTodo";
 import HomePage from "./pages/HomePage";
+import InvalidPath from "./pages/InvalidPath";
 
 export const MainContext = createContext(0);
 
@@ -83,6 +84,7 @@ function App() {
         >
           <Sidebar />
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/todo-list/:id" element={<TodoList />} />
             <Route
               path="/create-todo-list"
@@ -100,7 +102,11 @@ function App() {
               path="/todo-list/:id/edit-todo/:tid"
               element={<CreateTodo edit={true} />}
             />
-            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/todo-list/:id/edit-todo/:tid"
+              element={<CreateTodo edit={true} />}
+            />
+            <Route path="*" element={<InvalidPath />} />
           </Routes>
         </MainContext.Provider>
       </div>
