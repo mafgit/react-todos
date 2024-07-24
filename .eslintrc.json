@@ -1,6 +1,7 @@
 {
-    "rules": {
-      "no-unused-vars": "off",
-      "eqeqeq": "off"
-    }
-  }
+  "rules": {
+    "no-unused-vars": "off",
+    "eqeqeq": "off"
+  },
+  "parser": "babel-eslint"
+}

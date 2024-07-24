@@ -32,6 +32,18 @@
   width: 100%;
 }
 
+.sidebar-item .icon {
+  color: #009dd5;
+}
+
+.sidebar-item:hover {
+  scale: 1.02;
+}
+
+.sidebar-item:visited {
+  color: #000;
+}
+
 .sidebar-item {
   width: 100%;
   border-radius: 5px;
@@ -45,13 +57,14 @@
   transition: all 0.3s;
 }
 
-.sidebar-item:hover {
-  scale: 1.02;
+.sidebar-item.selected {
+  box-shadow: 0px 0px 8px 2px #0068a5;
+  background-color: #1dacff;
 }
 
-.sidebar-item:visited {
-  color: #000;
-}
+/* .sidebar-item p {
+  color: #009dd5;
+} */
 
 .sidebar-section .create-btn {
   width: 100%;
