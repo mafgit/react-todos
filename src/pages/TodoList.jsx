@@ -49,7 +49,6 @@ const TodoList = () => {
           {todoList.title}
         </h1>
         <div className="todo-list-btns">
-          {/* TODO: delete todo list */}
           <FontAwesomeIcon
             icon={faTrash}
             className="delete-todo-list-btn btn"

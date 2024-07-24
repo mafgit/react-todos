@@ -48,20 +48,19 @@ const Todo = ({ title, id, listId, completed, date }) => {
         icon={faTrash}
         className="btn trash-btn"
         onClick={() => {
-          // TODO: not getting updated after deleting
-          const lists = todoLists;
-          for (let i = 0; i < lists.length; i++) {
-            if (lists[i].id == listId) {
-              const { todos } = lists[i];
-              for (let j = 0; j < todos.length; j++) {
-                if (todos[j].id == id) {
-                  lists[i].todos.splice(j, 1);
-                }
-              }
+          const newTodoLists = [...todoLists];
+          // Must make a new array using ... so that setTodoLists actually changes the state
+
+          for (let i = 0; i < newTodoLists.length; i++) {
+            if (newTodoLists[i].id == listId) {
+              newTodoLists[i].todos = newTodoLists[i].todos.filter(
+                (t) => t.id != id
+              );
             }
           }
-          setTodoLists(lists);
-          saveTodoLists(lists);
+
+          setTodoLists(newTodoLists);
+          saveTodoLists(newTodoLists);
         }}
       />
       <Link to={`/todo-list/${listId}/edit-todo/${id}`}>
