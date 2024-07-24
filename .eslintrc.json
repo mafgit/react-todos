@@ -1,7 +1,8 @@
 {
   "rules": {
     "no-unused-vars": "off",
-    "eqeqeq": "off"
+    "eqeqeq": "off",
+    "requireConfigFile": false
   },
-  "parser": "babel-eslint"
+  "parser": "@babel/eslint-parser"
 }

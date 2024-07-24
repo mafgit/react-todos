@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import Todo from "../components/Todo";
 import "../styles/TodoList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,9 +13,10 @@ import {
 
 const TodoList = () => {
   const location = useLocation();
-  const { todoLists } = useContext(MainContext);
+  const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
   const [todoList, setTodoList] = useState([]);
   const { id } = useParams();
+  const nav = useNavigate();
 
   useEffect(() => {
     todoLists.length &&
@@ -38,6 +39,12 @@ const TodoList = () => {
           <FontAwesomeIcon
             icon={faTrash}
             className="delete-todo-list-btn btn"
+            onClick={() => {
+              const newTodoLists = todoLists.filter((list) => list.id != id);
+              setTodoLists(newTodoLists);
+              saveTodoLists(newTodoLists);
+              nav("/");
+            }}
           />
           <Link to={location.pathname + "/edit-todo-list"}>
             <FontAwesomeIcon icon={faPen} className="edit-todo-list-btn btn" />

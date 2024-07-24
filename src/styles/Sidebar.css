@@ -58,8 +58,10 @@
 }
 
 .sidebar-item.selected {
-  box-shadow: 0px 0px 8px 2px #0068a5;
-  background-color: #1dacff;
+  /* box-shadow: 0px 0px 8px 2px #0068a5; */
+  /* background-color: #1dacff; */
+  /* scale: 1.03; */
+  /* border-radius: 50px; */
 }
 
 /* .sidebar-item p {
