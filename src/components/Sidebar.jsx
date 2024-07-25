@@ -2,15 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
 import SidebarItem from "./SidebarItem";
 import "../styles/Sidebar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faRocket,
-  faSort,
-  faSortDown,
-  faSortUp,
-} from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
+import { FaPlus, FaRocket, FaSortUp } from "react-icons/fa";
 
 const Sidebar = () => {
   const { todoLists } = useContext(MainContext);
@@ -38,14 +31,14 @@ const Sidebar = () => {
     <div className="sidebar">
       <Link to="/" className="heading-link">
         <h1 className="heading rocket">
-          <FontAwesomeIcon className="rocket" icon={faRocket} /> React Todos
+          <FaRocket className="rocket" /> React Todos
         </h1>
       </Link>
 
       <div className="sidebar-section">
         <div className="section-head">
           <h4>Todo</h4>
-          <FontAwesomeIcon icon={faSortUp} />
+          <FaSortUp />
         </div>
 
         {todoLists.map((list) => {
@@ -60,7 +53,7 @@ const Sidebar = () => {
         })}
 
         <Link to="/create-todo-list" className="create-btn">
-          <FontAwesomeIcon icon={faPlus} /> Create
+          <FaPlus /> Create
         </Link>
       </div>
     </div>

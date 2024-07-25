@@ -1,9 +1,9 @@
-import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/CreateTodoList.css";
 import { redirect, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
+import { FaCheck } from "react-icons/fa";
+import { FaX, FaXmark } from "react-icons/fa6";
 
 const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
@@ -29,8 +29,6 @@ const CreateTodoList = ({ edit }) => {
       className="create-form main"
       onSubmit={(e) => {
         e.preventDefault();
-        const max = 1000000;
-        const min = 2;
         const lists = todoLists;
         const randomId = getRandomId();
 
@@ -94,10 +92,10 @@ const CreateTodoList = ({ edit }) => {
             navigate(-1);
           }}
         >
-          <FontAwesomeIcon icon={faClose} className="form-cancel-btn" />
+          <FaXmark className="form-cancel-btn" />
         </button>
         <button type="submit">
-          <FontAwesomeIcon icon={faCheck} className="form-submit-btn" />
+          <FaCheck className="form-submit-btn" />
         </button>
       </div>
     </form>

@@ -1,9 +1,10 @@
-import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/CreateTodoList.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
+import { FaCheck } from "react-icons/fa";
+import { FaX, FaXmark } from "react-icons/fa6";
+import { IconContext } from "react-icons";
 
 const CreateTodo = ({ edit }) => {
   const navigate = useNavigate();
@@ -99,10 +100,10 @@ const CreateTodo = ({ edit }) => {
             navigate(-1);
           }}
         >
-          <FontAwesomeIcon icon={faClose} className="form-cancel-btn" />
+          <FaXmark className="form-cancel-btn" />
         </button>
         <button type="submit">
-          <FontAwesomeIcon icon={faCheck} className="form-submit-btn" />
+          <FaCheck className="form-submit-btn" />
         </button>
       </div>
     </form>

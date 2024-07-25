@@ -1,46 +1,46 @@
-import {
-  faEdit,
-  faPen,
-  faSquare,
-  faSquareCheck,
-  faTrash,
-  faUpDown,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
 import { MainContext } from "../App";
 import { Link } from "react-router-dom";
+import { FaSquareCheck, FaUpDown } from "react-icons/fa6";
+import { FaPen, FaSquare, FaTrash } from "react-icons/fa";
 
 const Todo = ({ title, id, listId, completed, date }) => {
   const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
 
+  const handleClick = () => {
+    const newTodoLists = [...todoLists];
+    newTodoLists.forEach((list) => {
+      if (list.id == listId) {
+        list.todos.forEach((todo) => {
+          if (todo.id == id) {
+            todo.completed = !completed;
+            completed = !completed;
+          }
+        });
+      }
+    });
+
+    setTodoLists(newTodoLists);
+    saveTodoLists(newTodoLists);
+  };
+
   return (
     <div className={"todo" + (completed ? " completed-todo" : "")}>
-      <FontAwesomeIcon icon={faUpDown} className="fa-up-down" />
-      <FontAwesomeIcon
-        className={`btn fa-square${completed ? " completed-square" : ""}`}
-        icon={completed ? faSquareCheck : faSquare}
-        onClick={() => {
-          const newTodoLists = [...todoLists];
-          newTodoLists.forEach((list) => {
-            if (list.id == listId) {
-              list.todos.forEach((todo) => {
-                if (todo.id == id) {
-                  todo.completed = !completed;
-                  completed = !completed;
-                }
-              });
-            }
-          });
-
-          setTodoLists(newTodoLists);
-          saveTodoLists(newTodoLists);
-        }}
-      />
+      <FaUpDown className="fa-up-down" />
+      {!completed ? (
+        <FaSquare
+          className={`btn fa-square${completed ? " completed-square" : ""}`}
+          onClick={handleClick}
+        />
+      ) : (
+        <FaSquareCheck
+          className={`btn fa-square${completed ? " completed-square" : ""}`}
+          onClick={handleClick}
+        />
+      )}
       <p>{title}</p>
       <p className="date">{date}</p>
-      <FontAwesomeIcon
-        icon={faTrash}
+      <FaTrash
         className="btn trash-btn"
         onClick={() => {
           const newTodoLists = [...todoLists];
@@ -59,7 +59,7 @@ const Todo = ({ title, id, listId, completed, date }) => {
         }}
       />
       <Link to={`/todo-list/${listId}/edit-todo/${id}`}>
-        <FontAwesomeIcon icon={faPen} className="btn pen-btn" />
+        <FaPen className="btn pen-btn" />
       </Link>
     </div>
   );

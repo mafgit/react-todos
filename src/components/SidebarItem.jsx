@@ -1,5 +1,4 @@
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaRocket } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const SidebarItem = ({ id, title, selected }) => {
@@ -8,7 +7,7 @@ const SidebarItem = ({ id, title, selected }) => {
       className={"sidebar-item" + (selected ? " selected" : "")}
       to={`/todo-list/${id}`}
     >
-      <FontAwesomeIcon className="icon" icon={faRocket} />
+      <FaRocket className="icon" />
       <p>{title}</p>
     </Link>
   );

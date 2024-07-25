@@ -1,14 +1,14 @@
-import { faCirclePlus, faFile } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaFile } from "react-icons/fa";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const EmptyList = () => {
   return (
     <div className="empty-list">
-      <FontAwesomeIcon className="big-icon" icon={faFile} />
+      <FaFile className="big-icon" />
       <h1>The list is empty</h1>
       <p>
-        <FontAwesomeIcon icon={faCirclePlus} className="para-icon" /> Create
-        todos by pressing the plus button on top right
+        <FaCirclePlus className="para-icon" /> Create todos by pressing the plus
+        button on top right
       </p>
 
       <p></p>

@@ -1,27 +1,21 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaDoorOpen, FaRocket } from "react-icons/fa";
 import "../styles/HomePage.css";
-import {
-  faCirclePlus,
-  faComputerMouse,
-  faDoorOpen,
-  faRocket,
-} from "@fortawesome/free-solid-svg-icons";
+import { FaCirclePlus, FaComputerMouse } from "react-icons/fa6";
 
 const HomePage = () => {
   return (
     <div className="home-page main">
-      <FontAwesomeIcon className="big-icon" icon={faDoorOpen} />
+      <FaDoorOpen className="big-icon" />
       <h1>
-        <FontAwesomeIcon className="rocket" icon={faRocket} /> Welcome to React
-        Todos
+        <FaRocket className="rocket" /> Welcome to React Todos
       </h1>
       <p>
-        <FontAwesomeIcon icon={faComputerMouse} className="para-icon" /> Click
-        on a todo list on the sidebar to open it
+        <FaComputerMouse className="para-icon" /> Click on a todo list on the
+        sidebar to open it
       </p>
       <p>
-        <FontAwesomeIcon icon={faCirclePlus} className="para-icon" /> If there
-        is none, you can create a list by clicking Create
+        <FaCirclePlus className="para-icon" /> If there is none, you can create
+        a list by clicking Create
       </p>
       <p></p>
     </div>

@@ -13,13 +13,15 @@
 
 .form-cancel-btn,
 .form-submit-btn {
-  width: 16px;
-  height: 16px;
+  width: 35px;
+  height: 35px;
   padding: 10px;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s;
+  box-shadow: none;
+  vertical-align: middle; /* this is must to remove that gray area under the form buttons */
 }
 
 .form-cancel-btn:hover,
