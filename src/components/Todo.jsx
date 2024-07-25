@@ -12,31 +12,29 @@ import { MainContext } from "../App";
 import { Link } from "react-router-dom";
 
 const Todo = ({ title, id, listId, completed, date }) => {
-  const [done, setDone] = useState(completed);
   const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
 
   return (
-    <div className={"todo" + (done ? " completed-todo" : "")}>
+    <div className={"todo" + (completed ? " completed-todo" : "")}>
       <FontAwesomeIcon icon={faUpDown} className="fa-up-down" />
       <FontAwesomeIcon
-        className={`btn fa-square${done ? " completed-square" : ""}`}
-        icon={done ? faSquareCheck : faSquare}
+        className={`btn fa-square${completed ? " completed-square" : ""}`}
+        icon={completed ? faSquareCheck : faSquare}
         onClick={() => {
           const newTodoLists = [...todoLists];
           newTodoLists.forEach((list) => {
             if (list.id == listId) {
               list.todos.forEach((todo) => {
                 if (todo.id == id) {
-                  todo.completed = !done;
+                  todo.completed = !completed;
+                  completed = !completed;
                 }
               });
             }
           });
 
-          setDone(!done);
           setTodoLists(newTodoLists);
           saveTodoLists(newTodoLists);
-          // TODO: FIX ERROR tick in one list goes to other lists
         }}
       />
       <p>{title}</p>
