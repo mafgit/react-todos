@@ -16,6 +16,7 @@ import {
   faRocket,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import EmptyList from "../components/EmptyList";
 
 const TodoList = () => {
   const location = useLocation();
@@ -37,7 +38,7 @@ const TodoList = () => {
     }
 
     if (!found) {
-      redirect("/invalid-path");
+      nav("/invalid-path");
     }
   }, [id]);
 
@@ -67,19 +68,22 @@ const TodoList = () => {
           </Link>
         </div>
       </div>
-
-      {todoList.todos?.map((todo) => {
-        return (
-          <Todo
-            title={todo.title}
-            completed={todo.completed}
-            key={todo.id}
-            id={todo.id}
-            date={todo.date}
-            listId={todoList.id}
-          />
-        );
-      })}
+      {todoList.todos && todoList.todos.length ? (
+        todoList.todos?.map((todo) => {
+          return (
+            <Todo
+              title={todo.title}
+              completed={todo.completed}
+              key={todo.id}
+              id={todo.id}
+              date={todo.date}
+              listId={todoList.id}
+            />
+          );
+        })
+      ) : (
+        <EmptyList />
+      )}
     </div>
   );
 };

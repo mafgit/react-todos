@@ -22,10 +22,8 @@ const Todo = ({ title, id, listId, completed, date }) => {
         className={`btn fa-square${done ? " completed-square" : ""}`}
         icon={done ? faSquareCheck : faSquare}
         onClick={() => {
-          setDone(!done);
-
-          const lists = todoLists;
-          lists.forEach((list) => {
+          const newTodoLists = [...todoLists];
+          newTodoLists.forEach((list) => {
             if (list.id == listId) {
               list.todos.forEach((todo) => {
                 if (todo.id == id) {
@@ -35,10 +33,9 @@ const Todo = ({ title, id, listId, completed, date }) => {
             }
           });
 
-          setTodoLists(lists);
-
-          localStorage.setItem("todo-lists", JSON.stringify(lists));
-          console.log(lists);
+          setDone(!done);
+          setTodoLists(newTodoLists);
+          saveTodoLists(newTodoLists);
           // TODO: FIX ERROR tick in one list goes to other lists
         }}
       />

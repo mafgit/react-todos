@@ -1,7 +1,7 @@
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/CreateTodoList.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
 
@@ -9,7 +9,8 @@ const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState();
   const [icon, setIcon] = useState("");
-  const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
+  const { todoLists, setTodoLists, saveTodoLists, getRandomId } =
+    useContext(MainContext);
   const { id } = useParams();
 
   useEffect(() => {
@@ -31,13 +32,14 @@ const CreateTodoList = ({ edit }) => {
         const max = 1000000;
         const min = 2;
         const lists = todoLists;
+        const randomId = getRandomId();
 
         if (!edit) {
           const newTodoList = {
             title: title,
             icon: "",
             todos: [],
-            id: Math.floor(Math.random() * (max - min) + min),
+            id: randomId,
           };
 
           setTodoLists([...lists, newTodoList]);
@@ -54,7 +56,12 @@ const CreateTodoList = ({ edit }) => {
           saveTodoLists(lists);
         }
 
-        navigate(-1);
+        if (edit) {
+          navigate(-1);
+        } else {
+          // redirect("/todo-list/" + randomId);
+          navigate("/todo-list/" + randomId);
+        }
       }}
     >
       <h1>{!edit ? "Create a todo list" : "Editing todo list"}</h1>
@@ -73,7 +80,12 @@ const CreateTodoList = ({ edit }) => {
 
       <div>
         <label htmlFor="icon-input">Choose an icon</label>
-        <input id="icon-input" type="button" value={icon} />
+        <input
+          id="icon-input"
+          type="button"
+          onChange={(e) => setIcon(e.target.value)}
+          value={icon}
+        />
       </div>
 
       <div className="form-btns">

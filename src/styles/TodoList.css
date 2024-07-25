@@ -87,3 +87,24 @@
   display: flex;
   gap: 10px;
 }
+
+.empty-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
+  color: #272727;
+}
+
+.empty-list .big-icon {
+  font-size: 50px;
+}
+
+.empty-list p {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
