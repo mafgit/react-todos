@@ -34,7 +34,6 @@ const Sidebar = () => {
     }
   }, [loc.pathname]);
 
-  // TODO: new name of list not getting updated in sidebar
   return (
     <div className="sidebar">
       <Link to="/" className="heading-link">
