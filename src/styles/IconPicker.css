@@ -1,0 +1,23 @@
+.icon-picker {
+  width: 200px;
+  height: 200px;
+  background-color: #18aaff;
+  border-radius: 10px;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* left: calc(50% - 100px); */
+  /* top: calc(50% - 100px); */
+  z-index: 2;
+}
+
+.icon-picker * {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 35px;
+  cursor: pointer;
+}

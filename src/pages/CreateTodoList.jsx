@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
 import { FaCheck } from "react-icons/fa";
 import { FaX, FaXmark } from "react-icons/fa6";
+import IconPicker from "../components/IconPicker";
 
 const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
@@ -25,80 +26,83 @@ const CreateTodoList = ({ edit }) => {
   }, [id]);
 
   return (
-    <form
-      className="create-form main"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const lists = todoLists;
-        const randomId = getRandomId();
+    <>
+      <IconPicker setIcon={setIcon} />
+      <form
+        className="create-form main"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const lists = todoLists;
+          const randomId = getRandomId();
 
-        if (!edit) {
-          const newTodoList = {
-            title: title,
-            icon: "",
-            todos: [],
-            id: randomId,
-          };
+          if (!edit) {
+            const newTodoList = {
+              title: title,
+              icon: "",
+              todos: [],
+              id: randomId,
+            };
 
-          setTodoLists([...lists, newTodoList]);
-          saveTodoLists([...lists, newTodoList]);
-        } else {
-          lists.forEach((list) => {
-            if (list.id == id) {
-              list.title = title;
-              list.icon = icon;
-            }
-          });
+            setTodoLists([...lists, newTodoList]);
+            saveTodoLists([...lists, newTodoList]);
+          } else {
+            lists.forEach((list) => {
+              if (list.id == id) {
+                list.title = title;
+                list.icon = icon;
+              }
+            });
 
-          setTodoLists(lists);
-          saveTodoLists(lists);
-        }
+            setTodoLists(lists);
+            saveTodoLists(lists);
+          }
 
-        if (edit) {
-          navigate(-1);
-        } else {
-          // redirect("/todo-list/" + randomId);
-          navigate("/todo-list/" + randomId);
-        }
-      }}
-    >
-      <h1>{!edit ? "Create a todo list" : "Editing todo list"}</h1>
-      <hr />
-      <div>
-        <label htmlFor="title-input">Title of the list</label>
-        <input
-          id="title-input"
-          type="text"
-          placeholder="Title"
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="icon-input">Choose an icon</label>
-        <input
-          id="icon-input"
-          type="button"
-          onChange={(e) => setIcon(e.target.value)}
-          value={icon}
-        />
-      </div>
-
-      <div className="form-btns">
-        <button
-          onClick={() => {
+          if (edit) {
             navigate(-1);
-          }}
-        >
-          <FaXmark className="form-cancel-btn" />
-        </button>
-        <button type="submit">
-          <FaCheck className="form-submit-btn" />
-        </button>
-      </div>
-    </form>
+          } else {
+            // redirect("/todo-list/" + randomId);
+            navigate("/todo-list/" + randomId);
+          }
+        }}
+      >
+        <h1>{!edit ? "Create a todo list" : "Editing todo list"}</h1>
+        <hr />
+        <div>
+          <label htmlFor="title-input">Title of the list</label>
+          <input
+            id="title-input"
+            type="text"
+            placeholder="Title"
+            required
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="icon-input">Choose an icon</label>
+          <input
+            id="icon-input"
+            type="button"
+            onChange={(e) => setIcon(e.target.value)}
+            value={icon}
+          />
+        </div>
+
+        <div className="form-btns">
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <FaXmark className="form-cancel-btn" />
+          </button>
+          <button type="submit">
+            <FaCheck className="form-submit-btn" />
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 
