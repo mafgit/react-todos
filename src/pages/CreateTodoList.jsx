@@ -27,7 +27,7 @@ const CreateTodoList = ({ edit }) => {
 
   return (
     <>
-      <IconPicker setIcon={setIcon} />
+      {/* <IconPicker setIcon={setIcon} /> */}
       <form
         className="create-form main"
         onSubmit={(e) => {
