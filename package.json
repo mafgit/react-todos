@@ -1,5 +1,6 @@
 {
-  "name": "react-notes-todos",
+  "name": "react-todos",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
