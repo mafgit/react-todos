@@ -6,7 +6,8 @@ import CreateTodoList from "./pages/CreateTodoList";
 import CreateTodo from "./pages/CreateTodo";
 import HomePage from "./pages/HomePage";
 import InvalidPath from "./pages/InvalidPath";
-import { FaBars } from "react-icons/fa";
+import { FaAngleRight, FaBars } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export const MainContext = createContext(0);
 
@@ -90,10 +91,27 @@ function App() {
             setSidebarOpened={setSidebarOpened}
           />
 
-          <div className="main-container">
+          <div
+            className="main-container"
+            // variants={{
+            //   full: {
+            //     x: "0",
+            //     width: "100%",
+            //     transition: { ease: "easeInOut", duration: 0.3 },
+            //   },
+            //   notFull: {
+            //     x: "0",
+            //     width: "100%",
+            //     transition: { ease: "easeInOut", duration: 0.3 },
+            //   },
+            // }}
+            // initial="notFull"
+            // animate={sidebarOpened ? "notFull" : "full"}
+            // exit={{ display: "none" }}
+          >
             {!sidebarOpened && (
-              <FaBars
-                className="bars btn"
+              <FaAngleRight
+                className="open-btn btn"
                 onClick={() => setSidebarOpened(true)}
               />
             )}

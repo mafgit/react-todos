@@ -3,7 +3,13 @@ import { MainContext } from "../App";
 import SidebarItem from "./SidebarItem";
 import "../styles/Sidebar.css";
 import { Link, useLocation } from "react-router-dom";
-import { FaPlus, FaRocket, FaSortUp } from "react-icons/fa";
+import {
+  FaAngleLeft,
+  FaArrowLeft,
+  FaPlus,
+  FaRocket,
+  FaSortUp,
+} from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaXmark } from "react-icons/fa6";
 
@@ -55,7 +61,10 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
           </h1>
         </Link>
 
-        <FaXmark className="btn" onClick={() => setSidebarOpened(false)} />
+        <FaAngleLeft
+          className="close-btn btn"
+          onClick={() => setSidebarOpened(false)}
+        />
 
         <div className="sidebar-section">
           <div className="section-head">
