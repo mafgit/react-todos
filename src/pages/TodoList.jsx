@@ -11,6 +11,7 @@ import Todo from "../components/Todo";
 import "../styles/TodoList.css";
 import EmptyList from "../components/EmptyList";
 import { FaRocket, FaPen, FaPlus, FaTrash } from "react-icons/fa";
+// import bgImg from "/images/bg1.jpg";
 
 const TodoList = () => {
   const location = useLocation();
@@ -44,7 +45,7 @@ const TodoList = () => {
   return (
     <div className="todo-list main">
       <div className="bg">
-        <img src={require("../images/bg1.jpg")} alt="bg" />
+        <img src="/assets/images/bg1.jpg" alt="bg" />
         <div className="todo-list-head">
           <h1 className="todo-list-heading color-white">
             <Icon className="icon" />
