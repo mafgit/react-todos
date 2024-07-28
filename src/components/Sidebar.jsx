@@ -84,8 +84,8 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
             );
           })}
 
-          <Link to="/create-todo-list" className="create-btn">
-            <FaPlus /> Create
+          <Link to="/create-todo-list" className="create-btn color-black">
+            <FaPlus className="color-black" /> Create
           </Link>
         </div>
       </motion.div>

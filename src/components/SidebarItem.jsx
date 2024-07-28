@@ -13,7 +13,7 @@ const SidebarItem = ({ id, title, selected, icon }) => {
       to={`/todo-list/${id}`}
     >
       <Icon className="icon" />
-      <p>{title}</p>
+      <p className="color-black">{title}</p>
     </Link>
   );
 };

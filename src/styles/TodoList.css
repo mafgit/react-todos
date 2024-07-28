@@ -66,6 +66,10 @@
   justify-content: space-between;
 }
 
+.todo-list-head .icon {
+  color: #009dd5;
+}
+
 .create-todo-btn,
 .edit-todo-list-btn,
 .delete-todo-list-btn {
@@ -98,7 +102,6 @@
   height: 100%;
   flex-direction: column;
   gap: 20px;
-  color: #272727;
 }
 
 .empty-list .big-icon {

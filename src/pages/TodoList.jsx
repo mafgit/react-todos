@@ -43,8 +43,8 @@ const TodoList = () => {
   return (
     <div className="todo-list main">
       <div className="todo-list-head">
-        <h1 className="todo-list-heading">
-          <Icon style={{ color: "red" }} />
+        <h1 className="todo-list-heading color-black">
+          <Icon className="icon" />
           {/* <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "} */}
           {todoList.title}
         </h1>
