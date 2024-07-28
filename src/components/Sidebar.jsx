@@ -3,20 +3,15 @@ import { MainContext } from "../App";
 import SidebarItem from "./SidebarItem";
 import "../styles/Sidebar.css";
 import { Link, useLocation } from "react-router-dom";
-import {
-  FaAngleLeft,
-  FaArrowLeft,
-  FaPlus,
-  FaRocket,
-  FaSortUp,
-} from "react-icons/fa";
+import { FaAngleLeft, FaPlus, FaRocket, FaSortUp } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaXmark } from "react-icons/fa6";
+import { FaSortDown } from "react-icons/fa6";
 
 const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
   const { todoLists } = useContext(MainContext);
   const loc = useLocation();
   const [selected, setSelected] = useState("-1");
+  const [shown, setShown] = useState(true);
 
   // getting id from pathname
   useEffect(() => {
@@ -69,24 +64,43 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
         <div className="sidebar-section">
           <div className="section-head">
             <h4>Todo</h4>
-            <FaSortUp />
+            {shown ? (
+              <FaSortUp className="btn" onClick={() => setShown(false)} />
+            ) : (
+              <FaSortDown className="btn" onClick={() => setShown(true)} />
+            )}
           </div>
+          <motion.div
+            variants={{
+              shown: {
+                scaleY: 1,
+                transition: { ease: "easeInOut", duration: 0.3 },
+              },
+              hidden: {
+                scaleY: 0,
+                transition: { ease: "easeInOut", duration: 0.3 },
+              },
+            }}
+            initial="shown"
+            animate={shown ? "shown" : "hidden"}
+            className="sidebar-items"
+          >
+            {todoLists.map((list) => {
+              return (
+                <SidebarItem
+                  key={list.id}
+                  id={list.id}
+                  title={list.title}
+                  selected={list.id == selected}
+                  icon={list.icon}
+                />
+              );
+            })}
 
-          {todoLists.map((list) => {
-            return (
-              <SidebarItem
-                key={list.id}
-                id={list.id}
-                title={list.title}
-                selected={list.id == selected}
-                icon={list.icon}
-              />
-            );
-          })}
-
-          <Link to="/create-todo-list" className="create-btn color-black">
-            <FaPlus className="color-black" /> Create
-          </Link>
+            <Link to="/create-todo-list" className="create-btn color-black">
+              <FaPlus className="color-black" /> Create
+            </Link>
+          </motion.div>
         </div>
       </motion.div>
     </AnimatePresence>
