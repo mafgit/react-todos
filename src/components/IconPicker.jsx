@@ -8,15 +8,14 @@ const IconPicker = ({ setIcon, setIconPicker }) => {
   return (
     <div className="icon-picker">
       {icons.map((Icon, i) => (
-        <div className="icon">
-          {
-            <Icon
-              onClick={() => {
-                setIcon(i);
-                setIconPicker(false);
-              }}
-            />
-          }
+        <div
+          className="icon"
+          onClick={() => {
+            setIcon(i);
+            setIconPicker(false);
+          }}
+        >
+          {<Icon />}
         </div>
       ))}
     </div>

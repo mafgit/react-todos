@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MainContext } from "../App";
 
 const SidebarItem = ({ id, title, selected, icon }) => {
   const { icons } = useContext(MainContext);
   const [IconComp, setIconComp] = useState(() => icons[icon]);
+
+  useEffect(() => {
+    setIconComp(() => icons[icon]);
+  }, [icon]);
 
   return (
     <Link
