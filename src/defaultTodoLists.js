@@ -1,7 +1,7 @@
 const defaultTodoLists = [
   {
     id: 0,
-    icon: "",
+    icon: 0,
     title: "List 1",
     todos: [
       {
@@ -22,11 +22,11 @@ const defaultTodoLists = [
   },
   {
     id: 1,
-    icon: "",
+    icon: 0,
     title: "List 2",
     todos: [
       {
-        id: 0,
+        id: 1,
         completed: false,
         title: "Go to shopping 2",
         date: "2024-09-12",

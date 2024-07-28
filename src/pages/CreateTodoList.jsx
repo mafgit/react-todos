@@ -6,8 +6,6 @@ import { FaCheck, FaRocket } from "react-icons/fa";
 import { FaX, FaXmark } from "react-icons/fa6";
 import IconPicker from "../components/IconPicker";
 
-let Icon = () => <></>;
-
 const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState();
@@ -16,7 +14,7 @@ const CreateTodoList = ({ edit }) => {
     useContext(MainContext);
   const { id } = useParams();
   const [iconPicker, setIconPicker] = useState(false);
-  Icon = icons[icon];
+  const [IconComp, setIconComp] = useState(() => icons[0]);
 
   useEffect(() => {
     if (edit) {
@@ -29,9 +27,10 @@ const CreateTodoList = ({ edit }) => {
     }
   }, [id]);
 
-  // useEffect(() => {
-  //   Icon = icons[icon];
-  // }, [icon]);
+  useEffect(() => {
+    setIconComp(() => icons[icon]);
+    // passing arrow function necessary otherwise error
+  }, [icon]);
 
   return (
     <form
@@ -94,7 +93,7 @@ const CreateTodoList = ({ edit }) => {
             value={icon}
           /> */}
         <div className="choose-icon-div">
-          <Icon className="icon" />
+          <IconComp className="icon" />
           <button
             id="icon-input"
             type="button"

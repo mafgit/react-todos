@@ -12,8 +12,6 @@ import "../styles/TodoList.css";
 import EmptyList from "../components/EmptyList";
 import { FaRocket, FaPen, FaPlus, FaTrash } from "react-icons/fa";
 
-let Icon = () => <></>;
-
 const TodoList = () => {
   const location = useLocation();
   const { todoLists, setTodoLists, saveTodoLists, icons } =
@@ -21,6 +19,8 @@ const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
   const { id } = useParams();
   const nav = useNavigate();
+  const [Icon, setIcon] = useState(() => icons[0]);
+  // passing arrow function necessary otherwise error
 
   useEffect(() => {
     let found = false;
@@ -30,7 +30,8 @@ const TodoList = () => {
         if (list.id == id) {
           setTodoList(list);
           found = true;
-          Icon = icons[list.icon];
+          setIcon(() => icons[list.icon]);
+          // passing arrow function necessary otherwise error
         }
       });
     }
