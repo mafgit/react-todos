@@ -6,6 +6,7 @@ import CreateTodoList from "./pages/CreateTodoList";
 import CreateTodo from "./pages/CreateTodo";
 import HomePage from "./pages/HomePage";
 import InvalidPath from "./pages/InvalidPath";
+import { FaBars } from "react-icons/fa";
 
 export const MainContext = createContext(0);
 
@@ -71,6 +72,8 @@ function App() {
     return Math.floor(Math.random() * (max - min) + min);
   };
 
+  const [sidebarOpened, setSidebarOpened] = useState(true);
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -82,32 +85,44 @@ function App() {
             getRandomId,
           }}
         >
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/todo-list/:id" element={<TodoList />} />
-            <Route
-              path="/create-todo-list"
-              element={<CreateTodoList edit={false} />}
-            />
-            <Route
-              path="/todo-list/:id/create-todo"
-              element={<CreateTodo edit={false} />}
-            />
-            <Route
-              path="/todo-list/:id/edit-todo-list"
-              element={<CreateTodoList edit={true} />}
-            />
-            <Route
-              path="/todo-list/:id/edit-todo/:tid"
-              element={<CreateTodo edit={true} />}
-            />
-            <Route
-              path="/todo-list/:id/edit-todo/:tid"
-              element={<CreateTodo edit={true} />}
-            />
-            <Route path="*" element={<InvalidPath />} />
-          </Routes>
+          <Sidebar
+            sidebarOpened={sidebarOpened}
+            setSidebarOpened={setSidebarOpened}
+          />
+
+          <div className="main-container">
+            {!sidebarOpened && (
+              <FaBars
+                className="bars btn"
+                onClick={() => setSidebarOpened(true)}
+              />
+            )}
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/todo-list/:id" element={<TodoList />} />
+              <Route
+                path="/create-todo-list"
+                element={<CreateTodoList edit={false} />}
+              />
+              <Route
+                path="/todo-list/:id/create-todo"
+                element={<CreateTodo edit={false} />}
+              />
+              <Route
+                path="/todo-list/:id/edit-todo-list"
+                element={<CreateTodoList edit={true} />}
+              />
+              <Route
+                path="/todo-list/:id/edit-todo/:tid"
+                element={<CreateTodo edit={true} />}
+              />
+              <Route
+                path="/todo-list/:id/edit-todo/:tid"
+                element={<CreateTodo edit={true} />}
+              />
+              <Route path="*" element={<InvalidPath />} />
+            </Routes>
+          </div>
         </MainContext.Provider>
       </div>
     </BrowserRouter>
