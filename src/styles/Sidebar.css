@@ -1,5 +1,5 @@
 .sidebar {
-  width: 275px;
+  width: 300px;
   /* background-image: linear-gradient(#0066ff, #18aaff); */
   background-color: #009dd5;
   height: 100vh;
@@ -116,4 +116,7 @@
   position: absolute;
   top: calc(50% - 50px);
   right: 0;
+}
+
+@media (max-width: 700px) {
 }

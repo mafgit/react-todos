@@ -3,6 +3,7 @@ import { MainContext } from "../App";
 import { Link } from "react-router-dom";
 import { FaSquareCheck, FaUpDown } from "react-icons/fa6";
 import { FaPen, FaSquare, FaTrash } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Todo = ({ title, id, listId, completed, date }) => {
   const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
@@ -25,8 +26,9 @@ const Todo = ({ title, id, listId, completed, date }) => {
   };
 
   return (
-    <div className={"todo" + (completed ? " completed-todo" : "")}>
-      <FaUpDown className="fa-up-down" />
+    // TODO: drag
+    <motion.div className={"todo" + (completed ? " completed-todo" : "")}>
+      {/* <FaUpDown className="fa-up-down" /> */}
       {!completed ? (
         <FaSquare
           className={`btn fa-square${completed ? " completed-square" : ""}`}
@@ -38,7 +40,7 @@ const Todo = ({ title, id, listId, completed, date }) => {
           onClick={handleClick}
         />
       )}
-      <p>{title}</p>
+      <p className="todo-title">{title}</p>
       <p className="date">{date}</p>
       <FaTrash
         className="btn trash-btn"
@@ -61,7 +63,7 @@ const Todo = ({ title, id, listId, completed, date }) => {
       <Link to={`/todo-list/${listId}/edit-todo/${id}`}>
         <FaPen className="btn pen-btn" />
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 20px;
   justify-content: center;
+  text-align: center;
 }
 
 .home-page h1 {
@@ -47,4 +48,10 @@
   padding: 10px;
   border-radius: 5px;
   font-size: 0.8em;
+}
+
+@media (max-width: 700px) {
+  .home-page {
+    padding: 20px;
+  }
 }

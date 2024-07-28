@@ -43,28 +43,31 @@ const TodoList = () => {
 
   return (
     <div className="todo-list main">
-      <div className="todo-list-head">
-        <h1 className="todo-list-heading color-black">
-          <Icon className="icon" />
-          {/* <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "} */}
-          {todoList.title}
-        </h1>
-        <div className="todo-list-btns">
-          <FaTrash
-            className="delete-todo-list-btn btn"
-            onClick={() => {
-              const newTodoLists = todoLists.filter((list) => list.id != id);
-              setTodoLists(newTodoLists);
-              saveTodoLists(newTodoLists);
-              nav("/");
-            }}
-          />
-          <Link to={location.pathname + "/edit-todo-list"}>
-            <FaPen className="edit-todo-list-btn btn" />
-          </Link>
-          <Link to={location.pathname + "/create-todo"}>
-            <FaPlus className="create-todo-btn btn" />
-          </Link>
+      <div className="bg">
+        <img src={require("../images/bg1.jpg")} alt="bg" />
+        <div className="todo-list-head">
+          <h1 className="todo-list-heading color-white">
+            <Icon className="icon" />
+            {/* <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "} */}
+            {todoList.title}
+          </h1>
+          <div className="todo-list-btns">
+            <FaTrash
+              className="delete-todo-list-btn btn"
+              onClick={() => {
+                const newTodoLists = todoLists.filter((list) => list.id != id);
+                setTodoLists(newTodoLists);
+                saveTodoLists(newTodoLists);
+                nav("/");
+              }}
+            />
+            <Link to={location.pathname + "/edit-todo-list"}>
+              <FaPen className="edit-todo-list-btn btn" />
+            </Link>
+            <Link to={location.pathname + "/create-todo"}>
+              <FaPlus className="create-todo-btn btn" />
+            </Link>
+          </div>
         </div>
       </div>
       {todoList.todos && todoList.todos.length ? (

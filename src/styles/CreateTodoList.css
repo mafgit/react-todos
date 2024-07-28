@@ -87,3 +87,18 @@
   padding: 10px;
   border-radius: 3px 0 0 3px;
 }
+
+@media (max-width: 700px) {
+  .create-form {
+    width: 90%;
+    margin: auto;
+  }
+
+  .create-form input {
+    width: 250px;
+  }
+
+  #icon-input {
+    width: 200px;
+  }
+}

@@ -16,6 +16,7 @@ import {
   FaFile,
   FaFlag,
   FaHospital,
+  FaKey,
   FaPen,
   FaRocket,
 } from "react-icons/fa";
@@ -48,7 +49,7 @@ function App() {
     FaBuilding,
     FaBook,
     FaClock,
-    FaHospital,
+    FaKey,
     FaFile,
     FaFlag,
     FaCar,
