@@ -1,6 +1,7 @@
 import {
   FaBook,
   FaBuilding,
+  FaCar,
   FaClock,
   FaFile,
   FaFlag,
@@ -9,23 +10,23 @@ import {
   FaRocket,
 } from "react-icons/fa";
 import "../styles/IconPicker.css";
+import { useContext } from "react";
+import { MainContext } from "../App";
 
-const IconPicker = ({ setIcon }) => {
-  const icons = [
-    FaRocket,
-    FaPen,
-    FaBuilding,
-    FaBook,
-    FaClock,
-    FaHospital,
-    FaFile,
-    FaFlag,
-  ];
+const IconPicker = ({ setIcon, setIconPicker }) => {
+  const { icons } = useContext(MainContext);
 
   return (
     <div className="icon-picker">
       {icons.map((Icon, i) => (
-        <Icon onClick={() => setIcon(i)} />
+        <div className="icon">
+          <Icon
+            onClick={() => {
+              setIcon(i);
+              setIconPicker(false);
+            }}
+          />
+        </div>
       ))}
     </div>
   );

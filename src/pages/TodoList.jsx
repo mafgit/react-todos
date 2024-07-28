@@ -12,9 +12,12 @@ import "../styles/TodoList.css";
 import EmptyList from "../components/EmptyList";
 import { FaRocket, FaPen, FaPlus, FaTrash } from "react-icons/fa";
 
+let Icon = () => <></>;
+
 const TodoList = () => {
   const location = useLocation();
-  const { todoLists, setTodoLists, saveTodoLists } = useContext(MainContext);
+  const { todoLists, setTodoLists, saveTodoLists, icons } =
+    useContext(MainContext);
   const [todoList, setTodoList] = useState([]);
   const { id } = useParams();
   const nav = useNavigate();
@@ -27,6 +30,7 @@ const TodoList = () => {
         if (list.id == id) {
           setTodoList(list);
           found = true;
+          Icon = icons[list.icon];
         }
       });
     }
@@ -40,7 +44,7 @@ const TodoList = () => {
     <div className="todo-list main">
       <div className="todo-list-head">
         <h1 className="todo-list-heading">
-          <FaRocket style={{ color: "red" }} />
+          <Icon style={{ color: "red" }} />
           {/* <FontAwesomeIcon icon={faRocket} style={{ color: "red" }} />{" "} */}
           {todoList.title}
         </h1>

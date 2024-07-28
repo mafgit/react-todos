@@ -6,56 +6,23 @@ import CreateTodoList from "./pages/CreateTodoList";
 import CreateTodo from "./pages/CreateTodo";
 import HomePage from "./pages/HomePage";
 import InvalidPath from "./pages/InvalidPath";
-import { FaAngleRight, FaBars } from "react-icons/fa";
+import {
+  FaAngleRight,
+  FaBars,
+  FaBook,
+  FaBuilding,
+  FaCar,
+  FaClock,
+  FaFile,
+  FaFlag,
+  FaHospital,
+  FaPen,
+  FaRocket,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
+import defaultTodoLists from "./defaultTodoLists";
 
 export const MainContext = createContext(0);
-
-// default todo lists
-const defaultTodoLists = [
-  {
-    id: 0,
-    icon: "",
-    title: "List 1",
-    todos: [
-      {
-        id: 0,
-        completed: false,
-        title: "Go to shopping",
-        date: "2024-09-12",
-        listId: 0,
-      },
-      {
-        id: 1,
-        completed: false,
-        title: "Go to market",
-        date: "2024-09-13",
-        listId: 0,
-      },
-    ],
-  },
-  {
-    id: 1,
-    icon: "",
-    title: "List 2",
-    todos: [
-      {
-        id: 0,
-        completed: false,
-        title: "Go to shopping 2",
-        date: "2024-09-12",
-        listId: 1,
-      },
-      {
-        id: 1,
-        completed: false,
-        title: "Go to market 2",
-        date: "2024-09-13",
-        listId: 1,
-      },
-    ],
-  },
-];
 
 function App() {
   // must do like this otherwise localstorage keeps on changing back to default even after creating new items
@@ -75,6 +42,18 @@ function App() {
 
   const [sidebarOpened, setSidebarOpened] = useState(true);
 
+  const icons = [
+    FaRocket,
+    FaPen,
+    FaBuilding,
+    FaBook,
+    FaClock,
+    FaHospital,
+    FaFile,
+    FaFlag,
+    FaCar,
+  ];
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -84,6 +63,7 @@ function App() {
             setTodoLists,
             saveTodoLists,
             getRandomId,
+            icons,
           }}
         >
           <Sidebar

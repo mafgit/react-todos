@@ -79,6 +79,7 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
                 id={list.id}
                 title={list.title}
                 selected={list.id == selected}
+                icon={list.icon}
               />
             );
           })}

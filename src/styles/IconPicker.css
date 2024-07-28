@@ -1,23 +1,37 @@
 .icon-picker {
   width: 200px;
   height: 200px;
-  background-color: #18aaff;
+  background-color: #e9e9e9;
   border-radius: 10px;
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: row;
   gap: 10px;
   /* left: calc(50% - 100px); */
+  justify-content: flex-start;
   /* top: calc(50% - 100px); */
+  padding: 10px;
   z-index: 2;
 }
 
-.icon-picker * {
-  background-color: #fff;
-  padding: 10px;
+.icon-picker .icon {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-color: #009dd5;
+  /* padding: 10px; */
   border-radius: 50px;
-  font-size: 35px;
+  /* font-size: 35px; */
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-picker .icon * {
+  width: 20px;
+  height: 20px;
 }
