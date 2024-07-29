@@ -103,6 +103,7 @@
   height: 100%;
   flex-direction: column;
   gap: 20px;
+  text-align: center;
 }
 
 .empty-list .big-icon {
@@ -111,7 +112,7 @@
 
 .empty-list p {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
   align-items: center;
 }
@@ -125,7 +126,7 @@
 .bg img {
   border-radius: 5px;
   width: 100%;
-  height: 100%;
+  height: 250px;
   z-index: 1;
   object-fit: cover;
   filter: brightness(0.6);
@@ -134,7 +135,7 @@
 
 .todo-list-head {
   position: relative;
-  height: 100%;
+  height: 250px;
   align-items: flex-end;
 }
 
@@ -163,5 +164,9 @@
   }
   .todo {
     gap: 10px;
+  }
+
+  .empty-list {
+    padding: 20px;
   }
 }

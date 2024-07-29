@@ -63,7 +63,7 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
 
         <div className="sidebar-section">
           <div className="section-head">
-            <h4>Todo</h4>
+            <h4>Todo lists</h4>
             {shown ? (
               <FaSortUp className="btn" onClick={() => setShown(false)} />
             ) : (
