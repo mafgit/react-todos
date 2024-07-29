@@ -47,6 +47,7 @@ const CreateTodo = ({ edit }) => {
                   date,
                   title,
                   id: getRandomId(),
+                  listId: id,
                 },
               ];
             }

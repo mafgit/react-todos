@@ -26,7 +26,7 @@ const defaultTodoLists = [
     title: "List 2",
     todos: [
       {
-        id: 1,
+        id: 0,
         completed: false,
         title: "Go to shopping 2",
         date: "2024-09-12",

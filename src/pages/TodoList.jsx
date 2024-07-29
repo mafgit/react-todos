@@ -17,7 +17,7 @@ const TodoList = () => {
   const location = useLocation();
   const { todoLists, setTodoLists, saveTodoLists, icons } =
     useContext(MainContext);
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState({});
   const { id } = useParams();
   const nav = useNavigate();
   const [Icon, setIcon] = useState(() => icons[0]);
@@ -25,10 +25,12 @@ const TodoList = () => {
 
   useEffect(() => {
     let found = false;
+    setTodoList({});
 
     if (todoLists.length) {
       todoLists.forEach((list) => {
         if (list.id == id) {
+          // console.log(list);
           setTodoList(list);
           found = true;
           setIcon(() => icons[list.icon]);
@@ -40,7 +42,7 @@ const TodoList = () => {
     if (!found) {
       nav("/invalid-path");
     }
-  }, [id]);
+  }, [id, todoLists, icons, nav]);
 
   return (
     <div className="todo-list main">
