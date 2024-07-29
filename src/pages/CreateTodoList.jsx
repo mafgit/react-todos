@@ -8,7 +8,7 @@ import IconPicker from "../components/IconPicker";
 
 const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState("");
   const [icon, setIcon] = useState(0);
   const { todoLists, setTodoLists, saveTodoLists, getRandomId, icons } =
     useContext(MainContext);

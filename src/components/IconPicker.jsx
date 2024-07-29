@@ -14,6 +14,7 @@ const IconPicker = ({ setIcon, setIconPicker }) => {
             setIcon(i);
             setIconPicker(false);
           }}
+          key={i}
         >
           {<Icon />}
         </div>
