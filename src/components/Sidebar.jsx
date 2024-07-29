@@ -45,7 +45,7 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
             transition: { ease: "easeInOut", duration: 0.3 },
           },
         }}
-        initial="opened"
+        initial={window.innerWidth > 700 ? "opened" : "closed"}
         animate={sidebarOpened ? "opened" : "closed"}
         exit={{ display: "none" }}
         className="sidebar"
@@ -93,11 +93,18 @@ const Sidebar = ({ sidebarOpened, setSidebarOpened }) => {
                   title={list.title}
                   selected={list.id == selected}
                   icon={list.icon}
+                  setSidebarOpened={setSidebarOpened}
                 />
               );
             })}
 
-            <Link to="/create-todo-list" className="create-btn color-black">
+            <Link
+              to="/create-todo-list"
+              className="create-btn color-black"
+              onClick={() =>
+                window.innerWidth <= 700 && setSidebarOpened(false)
+              }
+            >
               <FaPlus className="color-black" /> Create
             </Link>
           </motion.div>

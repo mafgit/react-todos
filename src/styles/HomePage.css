@@ -8,22 +8,22 @@
 }
 
 .home-page h1 {
-  color: #009dd5;
+  color: var(--primary);
 }
 
 .home-page .big-icon {
   font-size: 50px;
-  color: #009dd5;
+  color: var(--primary);
 }
 
 .home-page .rocket {
   font-size: 24px;
-  color: #009dd5;
+  color: var(--primary);
   margin-right: 10px;
 }
 
 .home-page .para-icon {
-  color: #009dd5;
+  color: var(--primary);
   margin-right: 10px;
 }
 
@@ -35,15 +35,15 @@
 }
 
 .invalid-page h1 {
-  color: #d62929;
+  color: var(--red);
 }
 
 .invalid-page .big-icon {
-  color: #d62929;
+  color: var(--red);
 }
 
 .invalid-page .go-to-home-btn {
-  background-color: #009dd5;
+  background-color: var(--primary);
   color: #fff;
   padding: 10px;
   border-radius: 5px;

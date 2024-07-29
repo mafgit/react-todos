@@ -1,7 +1,7 @@
 .icon-picker {
   width: 200px;
   height: 200px;
-  background-color: #e9e9e9;
+  background-color: var(--input-bg);
   border-radius: 10px;
   /* position: absolute; */
   display: flex;
@@ -21,7 +21,7 @@
   width: 40px;
   height: 40px;
   color: #fff;
-  background-color: #009dd5;
+  background-color: var(--primary);
   /* padding: 10px; */
   border-radius: 50px;
   /* font-size: 35px; */

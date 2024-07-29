@@ -41,7 +41,9 @@ function App() {
     return Math.floor(Math.random() * (max - min) + min);
   };
 
-  const [sidebarOpened, setSidebarOpened] = useState(true);
+  const [sidebarOpened, setSidebarOpened] = useState(
+    () => window.innerWidth > 700
+  );
 
   const icons = [
     FaRocket,

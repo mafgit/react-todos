@@ -30,11 +30,11 @@
 }
 
 .form-cancel-btn {
-  background-color: #d62929;
+  background-color: var(--red);
 }
 
 .form-submit-btn {
-  background-color: #00a508;
+  background-color: var(--green);
 }
 
 .create-form > div:not(.form-btns) {
@@ -47,7 +47,7 @@
 
 .create-form input {
   min-width: 100%;
-  background-color: #e9e9e9;
+  background-color: var(--input-bg);
   padding: 10px;
   border-radius: 3px;
   border: none;
@@ -67,7 +67,7 @@
 
 #icon-input {
   padding: 10px;
-  background-color: #e9e9e9;
+  background-color: var(--input-bg);
   border-radius: 3px;
   width: 250px;
 }
@@ -80,7 +80,7 @@
 }
 
 .choose-icon-div .icon {
-  background-color: #009dd5;
+  background-color: var(--primary);
   color: #fff;
   width: 40px;
   height: 40px;
@@ -90,15 +90,25 @@
 
 @media (max-width: 700px) {
   .create-form {
-    width: 90%;
+    /* width: 90%; */
+    margin: auto;
+  }
+}
+
+@media (max-width: 360px) {
+  .create-form {
     margin: auto;
   }
 
   .create-form input {
-    width: 250px;
+    width: 100%;
   }
 
   #icon-input {
-    width: 200px;
+    width: 100%;
+  }
+
+  .create-form > div:not(.form-btns) {
+    width: 80%;
   }
 }

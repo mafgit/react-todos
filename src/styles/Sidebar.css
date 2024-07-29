@@ -1,7 +1,7 @@
 .sidebar {
   width: 300px;
   /* background-image: linear-gradient(#0066ff, #18aaff); */
-  background-color: #009dd5;
+  background-color: var(--primary);
   height: 100vh;
   color: #fff;
   display: flex;
@@ -44,7 +44,7 @@
 }
 
 .sidebar-item .icon {
-  color: #009dd5;
+  color: var(--primary);
 }
 
 .sidebar-item:hover {
@@ -76,7 +76,7 @@
 }
 
 /* .sidebar-item p {
-  color: #009dd5;
+  color: var(--primary);
 } */
 
 .sidebar-section .create-btn {
@@ -109,14 +109,11 @@
 .close-btn {
   background-color: #fff;
   /* padding: 10px; */
-  color: #009dd5;
+  color: var(--primary);
   width: 30px;
   height: 30px;
   border-radius: 50% 0 0 50%;
   position: absolute;
   top: calc(50% - 50px);
   right: 0;
-}
-
-@media (max-width: 700px) {
 }
