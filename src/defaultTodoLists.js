@@ -3,6 +3,7 @@ const defaultTodoLists = [
     id: 0,
     icon: 0,
     title: "List 1",
+    bg: "bg1.jpg",
     todos: [
       {
         id: 0,
@@ -24,6 +25,7 @@ const defaultTodoLists = [
     id: 1,
     icon: 0,
     title: "List 2",
+    bg: "bg2.jpg",
     todos: [
       {
         id: 0,

@@ -62,7 +62,7 @@ const TodoList = () => {
         }}
       />
       <div className="bg">
-        <img src="/assets/images/bg1.jpg" alt="bg" />
+        <img src={`/assets/images/${todoList.bg}`} alt="bg" />
         <div className="todo-list-head">
           <h1 className="todo-list-heading color-white">
             <Icon className="icon" />

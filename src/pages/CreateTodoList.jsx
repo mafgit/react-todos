@@ -4,33 +4,38 @@ import { useContext, useEffect, useState } from "react";
 import { MainContext } from "../App";
 import { FaCheck, FaRocket } from "react-icons/fa";
 import { FaX, FaXmark } from "react-icons/fa6";
-import IconPicker from "../components/IconPicker";
+// import IconPicker from "../components/IconPicker";
+import BgModal from "../components/BgModal";
+import IconModal from "../components/IconModal";
 
 const CreateTodoList = ({ edit }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [icon, setIcon] = useState(0);
+  const [iconIndex, setIconIndex] = useState(0);
   const { todoLists, setTodoLists, saveTodoLists, getRandomId, icons } =
     useContext(MainContext);
   const { id } = useParams();
-  const [iconPicker, setIconPicker] = useState(false);
   const [IconComp, setIconComp] = useState(() => icons[0]);
+  const [bgModalOpen, setBgModalOpen] = useState(false);
+  const [bgAns, setBgAns] = useState("");
+  const [iconModalOpen, setIconModalOpen] = useState("");
 
   useEffect(() => {
     if (edit) {
       for (let i = 0; i < todoLists.length; i++) {
         if (todoLists[i].id == id) {
-          setIcon(todoLists[i].icon);
+          setIconIndex(todoLists[i].icon);
           setTitle(todoLists[i].title);
+          setBgAns(todoLists[i].bg);
         }
       }
     }
   }, [id]);
 
   useEffect(() => {
-    setIconComp(() => icons[icon]);
+    setIconComp(() => icons[iconIndex]);
     // passing arrow function necessary otherwise error
-  }, [icon]);
+  }, [iconIndex]);
 
   return (
     <form
@@ -43,9 +48,10 @@ const CreateTodoList = ({ edit }) => {
         if (!edit) {
           const newTodoList = {
             title: title,
-            icon: icon,
+            icon: iconIndex,
             todos: [],
             id: randomId,
+            bg: bgAns,
           };
 
           setTodoLists([...lists, newTodoList]);
@@ -54,7 +60,7 @@ const CreateTodoList = ({ edit }) => {
           lists.forEach((list) => {
             if (list.id == id) {
               list.title = title;
-              list.icon = icon;
+              list.icon = iconIndex;
             }
           });
 
@@ -97,34 +103,51 @@ const CreateTodoList = ({ edit }) => {
           <button
             id="icon-input"
             type="button"
-            onClick={() => setIconPicker(!iconPicker)}
+            // onClick={() => setIconPicker(!iconPicker)}
+            onClick={() => setIconModalOpen(true)}
           >
             Choose an icon
           </button>
         </div>
       </div>
 
-      {iconPicker && (
+      {/* {iconPicker && (
         <IconPicker setIcon={setIcon} setIconPicker={setIconPicker} />
-      )}
+      )} */}
+      <IconModal
+        closable={true}
+        modalOpen={iconModalOpen}
+        setIconIndex={setIconIndex}
+        setModalOpen={setIconModalOpen}
+      />
 
-      {/* <div>
+      <BgModal
+        modalOpen={bgModalOpen}
+        setModalOpen={setBgModalOpen}
+        setAns={setBgAns}
+        closable={true}
+      />
+      <div>
         <label htmlFor="icon-input">Choose a background</label>
         <div className="choose-icon-div">
           <img
             className="small-selected-bg"
-            src="/assets/images/bg1.jpg"
+            src={
+              !edit
+                ? `/assets/images/${bgAns == "" ? "bg1.jpg" : bgAns}`
+                : "/assets/images/" + bgAns
+            }
             alt="bg"
           />
           <button
             id="icon-input"
             type="button"
-            onClick={() => setIconPicker(!iconPicker)}
+            onClick={() => setBgModalOpen(true)}
           >
             Choose a background
           </button>
         </div>
-      </div> */}
+      </div>
 
       <div className="form-btns">
         <button
