@@ -108,6 +108,24 @@ const CreateTodoList = ({ edit }) => {
         <IconPicker setIcon={setIcon} setIconPicker={setIconPicker} />
       )}
 
+      {/* <div>
+        <label htmlFor="icon-input">Choose a background</label>
+        <div className="choose-icon-div">
+          <img
+            className="small-selected-bg"
+            src="/assets/images/bg1.jpg"
+            alt="bg"
+          />
+          <button
+            id="icon-input"
+            type="button"
+            onClick={() => setIconPicker(!iconPicker)}
+          >
+            Choose a background
+          </button>
+        </div>
+      </div> */}
+
       <div className="form-btns">
         <button
           type="button"

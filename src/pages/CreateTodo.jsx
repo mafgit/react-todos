@@ -97,6 +97,7 @@ const CreateTodo = ({ edit }) => {
 
       <div className="form-btns">
         <button
+          type="button"
           onClick={() => {
             navigate(-1);
           }}
