@@ -21,6 +21,7 @@
   /* align-items: center; */
   justify-content: flex-start;
   gap: 10px;
+  position: relative;
 }
 
 .fa-square,

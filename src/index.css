@@ -110,7 +110,6 @@ a {
     width: 100vw;
   }
   .open-btn {
-    /* top: 90%; */
-    /* bottom: 10px !important; */
+    scale: 1.2;
   }
 }

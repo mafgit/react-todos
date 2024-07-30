@@ -11,6 +11,7 @@ import Todo from "../components/Todo";
 import "../styles/TodoList.css";
 import EmptyList from "../components/EmptyList";
 import { FaRocket, FaPen, FaPlus, FaTrash } from "react-icons/fa";
+import Modal from "../components/Modal";
 // import bgImg from "/images/bg1.jpg";
 
 const TodoList = () => {
@@ -22,6 +23,8 @@ const TodoList = () => {
   const nav = useNavigate();
   const [Icon, setIcon] = useState(() => icons[0]);
   // passing arrow function necessary otherwise error
+  const [modalOpen, setModalOpen] = useState(false);
+  const [ans, setAns] = useState(false);
 
   useEffect(() => {
     let found = false;
@@ -46,6 +49,18 @@ const TodoList = () => {
 
   return (
     <div className="todo-list main">
+      <Modal
+        closable={false}
+        setAns={setAns}
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+        onYes={() => {
+          const newTodoLists = todoLists.filter((list) => list.id != id);
+          setTodoLists(newTodoLists);
+          saveTodoLists(newTodoLists);
+          nav("/");
+        }}
+      />
       <div className="bg">
         <img src="/assets/images/bg1.jpg" alt="bg" />
         <div className="todo-list-head">
@@ -58,10 +73,7 @@ const TodoList = () => {
             <FaTrash
               className="delete-todo-list-btn btn"
               onClick={() => {
-                const newTodoLists = todoLists.filter((list) => list.id != id);
-                setTodoLists(newTodoLists);
-                saveTodoLists(newTodoLists);
-                nav("/");
+                setModalOpen(true);
               }}
             />
             <Link to={location.pathname + "/edit-todo-list"}>
