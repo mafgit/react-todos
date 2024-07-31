@@ -115,7 +115,7 @@
     width: 100%;
   }
 
-  .create-form > div:not(.form-btns) {
+  .create-form > div:not(.form-btns):not(.modal-container) {
     width: 80%;
   }
 }

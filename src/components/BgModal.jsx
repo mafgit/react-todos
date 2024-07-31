@@ -26,6 +26,7 @@ const Modal = ({ modalOpen, setModalOpen, setAns, closable }) => {
         <div className="bg-modal">
           {imgs.map((image) => (
             <img
+              key={image}
               src={`/assets/images/${image}`}
               onClick={() => {
                 setAns(image);
