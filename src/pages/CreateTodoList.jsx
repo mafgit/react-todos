@@ -61,6 +61,7 @@ const CreateTodoList = ({ edit }) => {
             if (list.id == id) {
               list.title = title;
               list.icon = iconIndex;
+              list.bg = bgAns;
             }
           });
 
